@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      outline: 0;
+    }
+
+    body {
+
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      color: #000000;
+
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 500px;
+      padding: 80px;
+    }
+
+    form {
+      width: 700px;
+      background-color: #efefef;
+      padding: 20px;
+      border-radius: 10px;
+      flex-direction: column;
+      align-items: center;
+      display: flex;
+    }
+    textarea{
+      width: 310px;
+      min-height: 100px;
+      padding: 5px;
+      border-radius: 5px;
+    }
+    div {
+      line-height: 40px;
+      display: flex;
+      justify-content: space-between;
+      margin: 5px;
+      width: 410px;
+    }
+
+
+    div input {
+      width: 300px;
+      height: 40px;
+      padding-left: 20px;
+      background-color: #ffffff;
+      border-radius: 5px;
+      border: 0.5px solid black;
+      font-size: 12pt;
+    }
+
+    </style>
+</head>
+
+<body>
+<h1>Update some news</h1>
+<form th:action="@{/product/saveP}" method="post" th:object="${pro}" >
+  <div><label for="id">ID</label>
+    <input type="text" th:field="*{id}" id="id" ></div>
+  <div><label for="name">NAME</label>
+    <input type="text" th:field="*{name}" id="name" ></div>
+  <div><label for="image">IMAGE</label> <input type="text" th:field="*{image}" id="image" ></div>
+  <div><label for="desc">DESC</label><textarea th:field="*{description}" id="desc" /></div>
+
+  <div><label for="price">PRICE</label> <input type="text" th:field="*{price}" id="price" ></div>
+  <div><label for="cateId">CATEGORY</label> <input list="stt" id="cateId"  th:field="*{cateId}">
+    <datalist id="stt">
+      <option value=1></option>
+      <option value=2></option>
+      <option value=3></option>
+      <option value=4></option>
+      <option value=5></option>
+      <option value=6></option>
+    </datalist>
+  </div>
+  <br>
+  <input type="submit" value="submit"  style="width: 100px;height: 30px;font-size: 13pt">
+</form>
+
+</body>
+
+</html>

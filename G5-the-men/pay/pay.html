@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+    integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      outline: 0;
+    }
+
+    body {
+      background-repeat: no-repeat;
+      background-position: center;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      color: #000000;
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 500px;
+      padding-top: 80px;
+    }
+
+    .pay-page {
+      display: flex;
+      flex-direction: column;
+      width: 900px;
+      padding: 40px;
+      border: 1px solid black;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.813);
+      min-height: 300px;
+      box-shadow: 0 0 6px 6px rgba(139, 139, 139, 0.786);
+    }
+
+    .cart-pre {
+
+      top: 65px;
+      right: 10px;
+      text-align: center;
+      width: 100%;
+      background-color: rgba(238, 233, 233, 0.786);
+      border-radius: 5px;
+      padding: 10px;
+      max-height: 300px;
+      overflow-y: scroll;
+    }
+
+    .cart-pre table {
+      width: 100%;
+      justify-content: space-between;
+      border-collapse: collapse;
+    }
+
+    .cart-pre table,
+    tr,
+    td {
+      border: 0.5px solid black;
+    }
+
+    table tbody {
+      min-height: 40px;
+    }
+
+    td img {
+      width: 100px;
+      height: 100px;
+    }
+
+    td input {
+      width: 30px;
+    }
+
+    .cart-pre::-webkit-scrollbar {
+      width: 10px;
+
+    }
+
+    .cart-pre::-webkit-scrollbar-track {
+      background-color: #0b0b0b;
+      border-radius: 20px;
+    }
+
+    .cart-pre::-webkit-scrollbar-thumb {
+      background-image: linear-gradient(-45deg, #b0afaf, #000000);
+      border-radius: 20px;
+    }
+
+    .step {
+      width: 100%;
+      text-align: center;
+      height: 50px;
+      display: flex;
+      padding-left: 100px;
+      align-content: center;
+      flex-direction: row;
+    }
+
+    .step div {
+      margin: 10px;
+      border-radius: 10px;
+      width: 200px;
+      border: 0.5px solid black;
+      padding: 6px 10px;
+      padding-left: 5px;
+      padding-right: 5px;
+
+    }
+    .in4 {
+      display: flex;
+      justify-content: space-between;
+    }
+    .in4 .personal {
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+    }
+
+    #total {
+      background-color: #ffffff;
+      border: 1px solid black;
+      float: right;
+      height: 20px;
+      border-radius: 4px;
+    }
+
+    .in4 label {
+      width: 350px;
+      height: 50px;
+      line-height: 25px;
+    }
+
+    label input {
+      float: right;
+      height: 25px;
+      width: 250px;
+    }
+
+    input {
+      text-align: center;
+    }
+
+    .instep {
+      background-color: #0b0b0b;
+      color: #fffbfb;
+    }
+
+    a {
+      text-decoration: none;
+      color: #000000;
+    }
+
+    table,
+    tr,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 5px;
+    }
+    .cart{
+      padding-top: 10px;
+    }
+    .cart .table{
+      overflow-y: hidden;
+      max-height: 230px;
+    }
+    .cart .table::-webkit-scrollbar{
+    width: 10px;
+    
+  }
+  .cart .table::-webkit-scrollbar-track{
+    background-color: #0b0b0b;
+    border-radius: 20px;
+  }
+  .cart .table::-webkit-scrollbar-thumb{
+    background-image: linear-gradient(-45deg, #b0afaf, #000000);
+    border-radius: 20px;
+  }
+  </style>
+</head>
+
+<body>
+
+  <div class="pay-page">
+    <div class="step">
+      <div id="st2" onclick="step(1)"><span>1. Check your cart</span></div>
+      <div id="st1" onclick="step(2)"><span>2. Check your infomation</span></div>
+      <div id="st3">3. Done</div>
+    </div>
+    <hr>
+    <div class="pay-main">
+      <div class="cart-pre">
+        <table>
+          <thead>
+            <tr style="background-color: #000000;color: #fffbfb;">
+              <td>Serial</td>
+              <td>Product</td>
+              <td>Quantity</td>
+              <td>Total</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody id="cart-detail">
+
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top: 5px;text-align: center;">
+
+        <button style="width: 100px;"><a href="../products/production.html">BACK</a></button>
+        <button onclick="step(2)" style="width: 100px;">NEXT STEP</button>
+      </div>
+    </div>
+
+    <div class="in4">
+      <div class="personal">
+        <h1>Your infomation</h1>
+        <br>
+        <label for="name">Name
+          <input type="text" name="name" id="name"></label>
+        <label for="tel">Phone
+          <input type="tel" name="tel" id="tel" pattern="[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}"
+            title="Phone Number format is +99(99)9999-9999" required> </label>
+        <label for="address">Address
+          <input type="text" name="address" id="address"></label>
+        <div>
+          <button onclick="step(1)" style="width: 100px;">BACK</button> <button id="paid"
+            style="width: 100px;">PAY</button>
+        </div>
+      </div>
+      <div class="cart">
+        <div class="table">
+        <table>
+          <thead style="text-align: center;background-color: #0b0b0b;color: #ffffff;">
+            <td>Product</td>
+            <td>Quantity</td>
+            <td>Total</td>
+          </thead>
+          <tbody id="cartdetail">
+
+          </tbody>
+        </table></div>
+        <div style="text-align: right;line-height: 20px;margin-top: 10px;">Amount:$ <input type="text" id="total" disabled></div>
+        <br>
+        <div>
+          <h3><b>Mode of payment</b></h3>
+          <div><input type="radio" name="type" id=""> Cash</div>
+          <div><input type="radio" name="type" id=""> Cheque</div>
+          <div><input type="radio" name="type" id=""> Digital mode of payment</div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="done" style="text-align: center;">
+      <h1 style="text-align: center;">Complete!</h1><br><br>
+      <button><a style="text-decoration: none;" href="../index.html">Discover more</a></button>
+    </div>
+  </div>
+</body>
+<script>
+  $(document).ready(function () {
+    var data=JSON.parse(localStorage.getItem('guess'));
+    var items;
+    let proId = [];
+    let count = [];
+    setTotal()
+    var total = 0;
+  
+    console.log(data);
+    $(window).click(function () {
+      if ($('.pay-main').css('display') === 'block')
+        setTotal();
+       items = JSON.parse(localStorage.getItem('incarts'));
+    })
+  
+    step = (i) => {
+      if (i === 2) { $('.in4').css('display', 'flex'); $('.pay-main').css('display', 'none'); $('.done').css('display', 'none'); $('#st1').addClass('instep'); $('#st2').removeClass('instep'); cart()}
+      if (i === 1) { $('.pay-main').css('display', 'block'); $('.in4').css('display', 'none'); $('.done').css('display', 'none'); $('#st1').removeClass('instep'); $('#st2').addClass('instep');}
+      if (i === 3) { $('.pay-main').css('display', 'none'); $('.in4').css('display', 'none'); $('.done').css('display', 'block'); $('#st2').removeClass('instep'); $('#st3').addClass('instep'); }
+    }
+    if (data === null) step(1);
+    else if (data !== null){
+      step(1);
+      $('#name').val(data.firstName + ' ' + data.lastName);
+      $('#tel').val(data.phone);
+      $('#address').val(data.address);
+    }
+    function setTotal() {
+      items = JSON.parse(localStorage.getItem('incarts'));
+      let tol = 0; let pro = new Array(); let c = new Array();
+      items.forEach(element => {
+        tol += element.count * element.price;
+        if (element.id !== 0)
+          pro.push(element.id);
+        if (element.count !== 0)
+          c.push(element.count);
+      });
+      proId = pro;
+      count = c;
+      total = tol;
+      $('#total').val(total);
+    }
+    $('#paid').click(function () {
+      setTotal()
+      if (total === 0) {
+        alert("Cart is empty. Please add some product!");
+        url = 'http://127.0.0.1:5500/products/production.html';
+        $(location).attr("href", url);
+      } else if ($('#name').val() === '' || $('#tel').val() === '' || $('#address').val() === '') { alert('customer infomation invalid or not enough. Please check!'); step(2) }
+      else {
+        setTotal();
+        let d = new Date();
+        var order = [{
+          id: 1,
+          name: $('#name').val(),
+          tel: $('#tel').val(),
+          address: $('#address').val(),
+          total: total,
+          status: 'new',
+          date: d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear()
+        }];
+
+        var detail = [{
+          id: 1,
+          proId: proId,
+          count: count
+        }];
+        console.log(JSON.stringify(order));
+        $.ajax({
+          type: "POST",
+          url: 'http://localhost:4001/saveorder',
+          async: true,
+          data: JSON.stringify(order),
+          contentType: 'application/json',
+          complete: function (data) { console.log(data); wait = false; }
+        });
+        $.ajax({
+          type: "POST",
+          url: 'http://localhost:4001/addDe',
+          async: true,
+          data: JSON.stringify(detail),
+          contentType: 'application/json',
+          complete: function (detail) { console.log(detail); wait = false; }
+        });
+        localStorage.removeItem('incarts');
+        localStorage.removeItem('carts');
+        step(3)
+      }
+    });
+      
+     function cart(){
+      items=JSON.parse(localStorage.getItem('incarts'))
+      $('#cartdetail').empty();
+      for (var p = 1; p < items.length; p++) {
+        var pro = "<tr>";
+        pro += '<td><p>' + items[p].name + '</p></td>';
+        pro += "<td><input type='number' style='height:20px;width:50px'' min='1' onchange='count(this.value," + p + ")' value=" + items[p].count + " class='quan " + items[p].id + "' disabled></td>";
+        pro += "<td><input type='text' style='height:20px;width:50px' id='total" + p + "' value='" + items[p].count * items[p].price + "'disabled></td>";
+        pro += "</tr>";
+
+        $('#cartdetail').append(pro);
+      }
+    };
+  });
+
+
+
+</script>
+<script src="../carts/cart.js"></script>
+
+</html>

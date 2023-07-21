@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homestyle.css}">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js}"
+            integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+</head>
+
+<body>
+<div class="hotline">
+    <a href="tel:1900000" rel="nofollow" title="hotline" class="header-hl">
+        <span>HOTLINE</span> <br>1900000
+    </a>
+</div>
+<div class="header">
+
+    <div class="nav">
+
+        <ul>
+            <li>
+                <p>
+                <h3 style="color: rgba(255, 255, 255, 0.833);margin: 0;padding: 0;width: 50px;">G5Hair</h3>
+                </p>
+            </li>
+            <li style="margin: 0;padding: 0;width: 50px;">
+                <a th:href="@{./index.html}"><i class="fa-solid fa-house" style="color: #fffbfb;"></i></a>
+            </li>
+            <li>
+                <div style="position: relative;">
+                    <i class="fa fa-search" aria-hidden="true"
+                       style="position: absolute;top: 15px;left: 5px;color: #858181;"></i>
+                    <input type="text" class="search" id="search" name="search"
+                           style="border-radius: 4px;height: 30px;width: 200px;padding-left: 20px;border: none;">
+                </div>
+            </li>
+            <li>
+                <a href="">Problems</a>
+                <ul class="sub-nav">
+                    <li><a href="./problem.html" class="tag">Hair loss</a></li>
+                    <li><a href="">Graying</a></li>
+                    <li><a href="">Growth related</a></li>
+                    <li><a href="">Premature baldness</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="">Solution</a>
+                <ul class="sub-nav">
+                    <li><a href="">Solution at home </a></li>
+                    <li><a href="">Advise</a></li>
+                </ul>
+            </li>
+            <li>
+                <a th:href="@{/product.html}">Products</a>
+
+            </li>
+
+
+            <li><a class="login" th:href="@{/login.html}">Contract</a></li>
+
+        </ul>
+    </div>
+
+</div>
+
+<main>
+
+    <div class="slide-show">
+        <div class="slide-container">
+            <div class="slide in">
+                <a href=""><img th:src="@{/products/slideone.png}" alt=""></a>
+            </div>
+            <div class="slide in">
+                <a href=""><img th:src="@{/products/slidetwo.png}" alt=""></a>
+            </div>
+            <div class="slide in">
+                <a href=""><img th:src="@{/products/slidefour.png}" alt=""></a>
+            </div>
+            <div class="slide in">
+                <a href=""><img th:src="@{/products/slidethree.png}" alt=""></a>
+            </div>
+            <div class="slide in">
+                <a href=""><img th:src="@{/products/slidefive.jpg}" alt=""></a>
+            </div>
+        </div><br>
+        <div class="dots">
+            <span class="dot" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+        </div>
+    </div>
+
+
+
+    <!-- NEWS -->
+    <div class="for-news">
+        <div class=" ">
+            <a href="./news.html">
+                <h2 style="color: rgb(235, 87, 87);text-align: center;">Hot news</h2>
+            </a>
+            <div class="container">
+                <div class="box">
+                    <div class="box-big">
+                        <div class="box-item">
+                            <a href="" class="link-wth-img img-resize">
+                                <img th:src="@{/products/news1.webp}" alt="" class="img-link"></a>
+
+                            <a href="">
+                                <h2 class="new-content">DEPOT® Original Formulas No.101 Normalizing Daily Shampoo in
+                                    our FRESH BLACK PEPPER – Limited Edition
+
+                                </h2>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="sub-box">
+                        <div class="box-item-sm">
+                            <a href="" class="link-wth-img img-resize">
+                                <img th:src="@{/products/news2.jpg}" alt="" class="img-link"></a>
+
+                            <a href="">
+                                <h2 class="new-content" style="font-size: 12pt;">Is It Bad to Wash Your Hair Every
+                                    Day?
+
+                                </h2>
+                            </a>
+                        </div>
+
+
+                        <div class="box-item-sm">
+                            <a href="" class="link-wth-img img-resize">
+                                <img th:src="@{/products/news3.webp}" alt="" class="img-link"></a>
+
+                            <a href="">
+                                <h2 class="new-content" style="font-size: 12pt;">How Red Hair Took Over the Runways
+                                    Fiery locks, especially those that suggested impromptu D.I.Y. dye jobs, defined
+                                    many
+                                    of the season’s most memorable looks.
+
+                                </h2>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- product -->
+    <div class="for-product">
+        <div class="sc-1tj1266-1 hgSywF"><h1 style="text-align: center;
+                font-weight: 300;font-family: 'Whitman Display'">Discover Our Products</h1></div>
+        <br>
+        <div class="product-box">
+            <div class="box-flex">
+                <div class="product in">
+                    <a href="" class="link-pic"><img th:src="@{/products/conditioner.png}" alt=""></a><h6 class="sc-7wl680-5 fptwfo">Styling Primer</h6>
+                </div>
+                <div class="product in">
+                    <a class="link-pic"><img th:src="@{/products/cowashgreen.jpg}" alt=""></a><h6 class="sc-7wl680-5 fptwfo">Styling Primer</h6>
+                </div>
+                <div class="product in">
+                    <a href="" class="link-pic"><img th:src="@{/products/hairmaskblue.png}" alt=""></a><h6 class="sc-7wl680-5 fptwfo">Styling Primer</h6>
+                </div>
+                <div class="product in" >
+                    <a href="" class="link-pic"><img th:src="@{/products/hairserum.png}" alt=""></a><h6 class="sc-7wl680-5 fptwfo">Styling Primer</h6>
+                </div>
+                <div class="product in">
+                    <a href="" class="link-pic"><img th:src="@{/products/shampoopurple.jpg}" alt=""></a><h6 class="sc-7wl680-5 fptwfo">Styling Primer</h6>
+                </div>
+                <div class="product in" style="display: none;">
+                    <a href="" class="link-pic"><img th:src="@{/products/shampoopurplebrass.png}" alt=""></a><h6 class="sc-7wl680-5 fptwfo">Styling Primer</h6>
+                </div>
+                <div class="product in" style="display: none;">
+                    <a href="" class="link-pic"><img th:src="@{/products/styling.png}" alt=""></a><h6 class="sc-7wl680-5 fptwfo">Styling Primer</h6>
+                </div>
+                <div class="product in" style="display: none;">
+                    <a href="" class="link-pic"><img th:src="@{/products/hairmaskblue.png}" alt=""></a><h6 class="sc-7wl680-5 fptwfo">Styling Primer</h6>
+                </div>
+            </div>
+        </div>
+        <a class="next" onclick="next(1)">></a>
+        <a class="prev" onclick="prev(-1)">
+            <</a>
+        <div class="more-pro"><a th:href="@{/products.html}" style="text-align: center;font-family: 'Whitman Display'">MORE PRODUCTS</a></div>
+    </div>
+
+    <div class="ps">
+        <img th:src="@{/products/func.png}" alt="">
+    </div>
+</main>
+
+<footer>
+    <div class="ft">
+
+        <div class="ft-content">
+            <p>Address: <a class="address">8A, Tôn Thất Thuyết, Mỹ Đình, Hà Nội</a></p>
+
+            <br>
+            <p>Hotline: 1900000</p>
+            <br>
+            <p>Email: G5hair@gmail.com</p>
+        </div>
+        <div class="support">
+
+            <p>SUPPORT</p><br>
+            <p><a href="">FAQ</a></p><br>
+            <p><a href="">Shipping info</a></p><br>
+            <p><a href="">Privacy</a></p><br>
+            <p><a href="">Terms</a></p><br>
+
+
+        </div>
+        <div class="company">
+            <ul>
+                <p>COMPANY</p><br>
+                <p><a href="">Affipates</a></p><br>
+                <p><a href="">Accessibipty</a></p><br>
+
+            </ul>
+        </div>
+        <iframe class="map"
+                th:src="@{https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0969490731704!2d105.77971427381718!3d21.028806487779818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b32b842a37%3A0xe91a56573e7f9a11!2zOGEgVMO0biBUaOG6pXQgVGh1eeG6v3QsIE3hu7kgxJDDrG5oLCBD4bqndSBHaeG6pXksIEjDoCBO4buZaSAxMDAwMDAsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1687884567114!5m2!1svi!2s}"
+
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    </div>
+    <div class="copy-right">&COPY; 2023 G5 HAIR CARE</div>
+</footer>
+</body>
+<script>
+    var index = 0;
+    var i = 0;
+    function slideShow() {
+
+        var slides = document.getElementsByClassName("slide");
+
+        var dots = document.getElementsByClassName('dot');
+
+
+        if (i > slides.length - 1) i = 0;
+        slides[i].style.display = "none";
+        dots[i].className = dots[i].className.replace(' active', '');
+        index++;
+        if (index > slides.length - 1) index = 0;
+        if (index < 0) index = slides.length - 1;
+        slides[index].style.display = "block";
+        dots[index].className += ' active';
+
+        i = index;
+        setTimeout(slideShow, 5000);
+    }
+    slideShow(index = 0);
+
+    function currentSlide(n) {
+
+        slideShow(index = n - 1);
+    };
+
+</script>
+
+<script>
+    var b=4;
+    var a=0;
+    var products=document.getElementsByClassName('product');
+
+    function next(p){
+        products[a].style.display='none';
+        a+=p;
+        b+=p;
+        if (b>products.length-1) b=0;
+        if (a>products.length-1) a=0;
+        products[b].style.display='';
+    }
+    function prev(e){
+        a+=e;if (a<0) a=products.length-1; products[a].style.display='';
+        products[b].style.display='none';
+        b+=e; if (b<0) b=products.length-1;
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        var a=0;
+        $(window).scrollTop(function(){
+            $('.nav').css('position','fixed');
+        })
+
+    })
+
+</script>
+
+</html>

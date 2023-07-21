@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./product.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"
+        integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+
+<body>
+    <div class="hotline">
+        <a href="tel:1900000" rel="nofollow" title="hotline" class="header-hl">
+            <span>HOTLINE</span> <br>1900000
+        </a>
+    </div>
+    <div class="header">
+
+        <div class="nav">
+
+            <ul>
+                <li>
+                    <a href="../home page/index.html">
+                        <p>
+                            <h3 style="color: rgba(255, 255, 255, 0.833);margin: 0;padding: 0;">
+                                G5Hair</h3>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <div style="position: relative;">
+                        <i class="fa fa-search" aria-hidden="true"
+                            style="position: absolute;top: 27px;left: 5px;color: #858181;"></i>
+                        <input type="text" class="search" id="search" name="search"
+                            style="border-radius: 4px;height: 30px;width: 380px;padding-left: 30px;border: none;margin-right: 20px;">
+                    </div>
+                    <div id="res" style="overflow-y: auto;max-height: 300px;background-color: #ffffff;"></div>
+                </li>
+                <li>
+                    <a href="../problem/problem.html">Problems</a>
+
+                </li>
+                <li>
+                    <a href="../Solution/Solution.html">Solution</a>
+
+                </li>
+                <li>
+                    <a href="" style="background-color: #696969;color: rgb(255, 255, 255);">Products</a>
+                </li>
+                <a style="width: 30px;margin-left:60px;" class="login" href="../login/login.html"><i
+                        class="fa-solid fa-user fa-xl" style="color: #ffffff;"></i></a></li>
+                <a style="width: 30px;margin-left: 10px;" id="cart"><i class="fa-sharp fa-solid fa-xl fa-cart-shopping"
+                        style="color: #ffffff;"></i></a><a id="notice"></a></li>
+
+            </ul>
+        </div>
+
+    </div>
+    <div class="cart-pre" style="display: none;">
+        <table>
+            <thead>
+                <tr style="background-color: #000000;color: #fffbfb;">
+                    <td>serial</td>
+                    <td>product</td>
+                    <td>quantity</td>
+                    <td>amount</td>
+                    <td>remove</td>
+                </tr>
+            </thead>
+            <tbody id="cart-detail">
+
+            </tbody>
+        </table>
+        <div style="margin-top: 5px;"><button id="pay" style="width: 140px;">CHECK OUT</button></div>
+    </div>
+    <main>
+        <div class="for-product">
+            <div class="product-container">
+
+                <div class="filter">
+                    <label for="select-product">
+                        <h3 style="color: #ffffff;">Serach your product</h1>
+                    </label>
+                    <input list="category" placeholder="-- choose category"
+                        style="border-radius: 4px;height: 40px;width: 220px;padding-left: 20px;border: none;" id="cate"
+                        onchange="view()" />
+
+                    <datalist id="category">
+                        <option value="All"></option>
+                        <option value="shampoo"></option>
+                        <option value="conditioner"></option>
+                        <option value="serum"></option>
+                        <option value="hair-mask"></option>
+                        <option value="hair-tool"></option>
+                    </datalist>
+
+
+                    <div class="list">
+                        <h3 style="color: #ffffff;">Order by:</h3>
+                        <div class="list-item">
+                            <table>
+                                <ul class="order-by">
+                                    <li><a>Name</a><button class="button" id="btn1">
+                                            <i class="fa-solid fa-plus" id="ic1"></i>
+                                        </button>
+
+                                    </li>
+                                    <div class="suv-order" id="for-name">
+                                        <input type="radio" name="name" value="desc"> DESC
+                                        <br>
+                                        <input type="radio" name="name" value="asc"> ASC
+                                    </div>
+                                    <li><a>Price</a><button class="button" id="btn2">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </button></li>
+                                    <div class="suv-order" id="for-price">
+                                        <input type="radio" name="pri"  value="desc"> DESC
+                                        <br>
+                                        <input type="radio" name="pri"  value="asc"> ASC
+                                    </div>
+                                    
+                                </ul>
+
+                                </ul>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="show-all">
+                    <div class="all-container">
+                        <div class="all-items" id="allitems">
+                            <!-- <div class="item" id="1">
+                                <a id="index" class="link-detail">
+                                    <img src="./Conditioner-Ocean.png" alt="">
+                                    <p class="pName">Conditioner Ocean</p>
+                                    <p class="price">12.00$</p>
+                                </a>
+                            </div> -->
+
+                        </div>
+                        <div class="change-page" style="line-height: 20px;">
+                            <button onclick="viewPage(-1)" style="margin-left: 30px;line-height: 20px;">
+                                <   </button>
+                                    <input type="text" min="0"
+                                        style="width: 10px;text-align: center;height: 20px;line-height: 20px;"
+                                        id="currentp" onchange="viewPage(this.value-1)"> / <span id="allpage"
+                                        style="line-height: 25px;"></span>
+                                    <button onclick="viewPage(1)" style="line-height: 20px;">></button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="detail" id="detail" style="position: fixed;display: none;">
+                    <!-- <div class="review">
+                        <div class="review-img">
+                            <img src="" alt="" id="review-img">
+                        </div>
+                        <div class="review-info">
+                            <p>
+                            <h1 style="text-align: center;">Information</h1>
+                            </p>
+                            <ul>
+                                <li class="id">ID:<p th:text="${}"></p>
+                                </li>
+                                <li class="origin">Origin: France
+                                </li>
+                                <li class="gender">Sex: UNISEX</li>
+
+
+                            </ul>
+                            <button class="choose">BUY NOW</button><
+                        </div>
+                    </div>
+                    <hr>
+                    <br>
+                    <div class="rv-content">
+                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="ft">
+
+            <div class="ft-content">
+                <p>Address: <a class="address">8A, Ton That Thuyet, My Dinh, Ha Noi</a></p>
+
+                <br>
+                <p>Hotline: 1900000</p>
+                <br>
+                <p>Email: G5hair@gmail.com</p>
+            </div>
+            <div class="support">
+
+                <p>SUPPORT</p><br>
+                <p><a href="">FAQ</a></p><br>
+                <p><a href="">Shipping info</a></p><br>
+                <p><a href="">Privacy</a></p><br>
+                <p><a href="">Terms</a></p><br>
+
+
+            </div>
+            <div class="company">
+                <ul>
+                    <p>COMPANY</p><br>
+                    <p><a href="">Affipates</a></p><br>
+                    <p><a href="">Accessibipty</a></p><br>
+                    <p>Follow us:</p><br>
+                    <p><i class="fa-brands fa-facebook-f" style="color: #ffffff;margin-right: 5px;"></i> <i
+                            class="fa-brands fa-instagram" style="color: #ffffff;"></i></p>
+
+                </ul>
+            </div>
+            <iframe class="map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0969490731704!2d105.77971427381718!3d21.028806487779818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b32b842a37%3A0xe91a56573e7f9a11!2zOGEgVMO0biBUaOG6pXQgVGh1eeG6v3QsIE3hu7kgxJDDrG5oLCBD4bqndSBHaeG6pXksIEjDoCBO4buZaSAxMDAwMDAsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1687884567114!5m2!1svi!2s"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </div>
+        <div class="copy-right">&COPY; 2023 G5 HAIR CARE</div>
+    </footer>
+</body>
+
+<script>
+    $(document).ready(function () {
+        var products
+        var last = 0;
+        var first = 0;
+        $.getJSON('http://localhost:4001/index', function (json) {
+            for (let index = 0; index <= 5; index++) {
+                $('#allitems').append('<div class="item ' + index + '" id="' + json[index].cateId + '"><a id="" class="link-detail" onclick="show(' + index + ')"><img src="../image/' + json[index].image + '" alt=""><p class="pName">' + json[index].name + '</p><p class="price">$' + json[index].price + '.00</p></a></div>');
+                c = '.' + index;
+                $(c).fadeIn();
+                if (Math.floor(json.length / 6) < json.length / 6)
+                    $('#allpage').text(Math.floor(json.length / 6) + 1); else $('#allpage').text(Math.floor(json.length / 6))
+                $('#currentp').val(1);
+        
+            };
+            window.localStorage.setItem('pro',JSON.stringify(json))
+        });
+
+        show = (i) => {
+            $.getJSON('http://localhost:4001/index', function (json) {
+                products = json;
+                console.log(json[i])
+                $('#detail').append('<div class="review"><div class="review-img"><img src="../image/' + products[i].image + '" alt="" id="review-img"></div><div class="review-info"><p><h1 style="text-align: center;">Information</h1></p><ul><li class="id">Item #:' + products[i].id + '</li><li class="gender">Name: ' + products[i].name + '</li><li class="origin">Origin: France</li><li class="gender">Gender: UNISEX</li><li style="color:green">In stock</li></ul><div class="btn-pro"><button id="choose" onclick="buy(' + i + ')">BUY NOW</button><button onclick="addtocart(' + i + ')"><i class="fa-sharp fa-solid fa-cart-plus fa-xl"></i></button></div></div></div><hr><br><div class="rv-content"><h2>Description</h2><p>' + products[i].description + '</p></div>')
+                $('#detail').toggle('slow');
+                $(window).click(function () {
+
+                    $('#detail').hide('slow'); $('#detail').empty();
+                });
+
+            })
+        }
+        viewPage = (p) => {
+            $('#allitems').empty();
+
+                if (p < 0)
+                    if (first + p * 5 < 0) first = 0; else first += p * 5 - 1;
+                if (p > 0)
+                    if (first + p * 5 < json.length - 1) first += p * 5 + 1;
+                last = first + 5;
+                $('#currentp').val(Math.floor(last / 5));
+                if (last > json.length - 1) last = json.length - 1;
+                for (let index = first; index <= last; index++) {
+                    $('#allitems').append('<div class="item ' + index + '" id="' + json[index].cateId + '"><a id="" class="link-detail" onclick="show(' + index + ')"><img src="../image/' + json[index].image + '" alt=""><p class="pName">' + json[index].name + '</p><p class="price">$' + json[index].price + '.00</p></a></div>');
+                    setTimeout(() => {
+                        c = '.' + index;
+                        $(c).toggle(700)
+                    }, 100)
+
+                    
+                };
+            
+        }
+
+        $('#btn1').click(function () {
+            $('#for-name').toggle('slow');
+        })
+        $('#btn2').click(function () {
+            $('#for-price').toggle('slow');
+        })
+        $('#btn3').click(function () {
+            $('#for-origin').toggle('slow');
+        })
+        
+        function compareValues(key, order) {
+            return function (a, b) {
+                if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+                    // nếu không tồn tại
+                    return 0;
+                }
+
+                const varA = (typeof a[key] === 'string') ?
+                    a[key].toUpperCase() : a[key];
+                const varB = (typeof b[key] === 'string') ?
+                    b[key].toUpperCase() : b[key];
+
+                let comparison = 0;
+                if (varA > varB) {comparison = 1;}
+                        
+                     else if (varA < varB) { comparison = -1;}
+                return (
+                (order == 'desc') ? (comparison * -1) : comparison
+        );
+  };
+  
+}   $('input[name="pri"]').change(function(){
+    var order=$('input[name="pri"]:checked').val()
+    json=JSON.parse(window.localStorage.getItem('pro'));
+    json.sort(compareValues('price',order))
+    viewPage(0)
+
+})
+
+$('input[name="name"]').change(function(){
+    var odn=$('input[name="name"]:checked').val()
+    json=JSON.parse(window.localStorage.getItem('pro'));
+    json.sort(compareValues('name',odn))
+    viewPage(0)
+
+})
+    });
+</script>
+<script>
+    const item = document.getElementsByClassName('item');
+    const types = [];
+    for (var a = 0; a < item.length; a++) types.push(item[a].id);
+    function view() {
+
+        var select = document.getElementById('cate').value;
+
+        switch (select) {
+            case 'shampoo':
+                for (var i = 0; i < item.length; i++)
+                    item[i].style.display = 'none';
+                for (var i = 0; i < item.length; i++)
+                    if (item[i].id == 1) item[i].style.display = 'block';
+                break;
+            case 'shampoo':
+                for (var i = 0; i < item.length; i++)
+                    item[i].style.display = 'none';
+                for (var i = 0; i < item.length; i++)
+                    if (item[i].id == 1) item[i].style.display = 'block';
+                break;
+            case 'conditioner':
+                for (var i = 0; i < item.length; i++)
+                    item[i].style.display = 'none';
+                for (var i = 0; i < item.length; i++)
+                    if (item[i].id == 2) item[i].style.display = 'block';
+                break;
+            case 'serum':
+                for (var i = 0; i < item.length; i++)
+                    item[i].style.display = 'none';
+                for (var i = 0; i < item.length; i++)
+                    if (item[i].id == 3) item[i].style.display = 'block';
+                break;
+            case 'hair-mask':
+                for (var i = 0; i < item.length; i++)
+                    item[i].style.display = 'none';
+                for (var i = 0; i < item.length; i++)
+                    if (item[i].id == 4) item[i].style.display = 'block';
+                break;
+            case 'hair-tool':
+                for (var i = 0; i < item.length; i++)
+                    item[i].style.display = 'none';
+                for (var i = 0; i < item.length; i++)
+                    if (item[i].id == 5) item[i].style.display = 'block';
+                break;
+            case 'All':
+                for (var i = 0; i < item.length; i++)
+                    item[i].style.display = 'block';
+
+                break;
+            default:
+                for (var i = 0; i < item.length; i++)
+                    item[i].style.display = 'block';
+        }
+    }
+
+</script>
+<script src="../carts/cart.js"></script>
+<script src="../mockdata/search.js"></script>
+
+</html>

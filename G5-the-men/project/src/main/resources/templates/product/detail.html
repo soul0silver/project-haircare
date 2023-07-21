@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            outline: 0;
+        }
+
+        body {
+            font-family: "Times New Roman";
+            color: #000000;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 500px;
+            padding: 80px;
+            line-height: 30px;
+            font-size: 14pt;
+        }
+        .container {
+
+            display: flex;
+            flex-direction: column;
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid black;
+        }
+        ul {
+            list-style-type: none;
+        }
+        ul, li {
+            height: 20px;
+        }
+        .container div {
+            border: 1px solid black;
+            padding: 5px;
+
+        }
+
+        .listsp div:first-child {
+            border-right: none;
+        }
+        .listsp div:last-child{
+            border-left: none;
+        }
+        .listsp{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+        }
+    </style>
+</head>
+
+<body>
+<h1 style="text-align: center">DETAIL</h1>
+<br/>
+<div class="container">
+    <div class="cusInfo" style="border-bottom: none">
+        <p><b>Customer's name:</b> <span th:text="${order.getName()}"></span></p>
+        <p><b>Phone number:</b> <span th:text="${order.getTel()}"></span></p>
+        <p><b>Address:</b> <span th:text="${order.getAddress()}"></span></p>
+        <p><b>Date begin:</b> <span th:text="${order.getDate()}"></span></p>
+    </div>
+    <div class="listsp" >
+        <div>
+            <h2 style="text-align: center">Product's names</h2>
+
+            <hr/>
+            <ul th:each="pro:${prod}">
+                <li style="width: 400px" th:text="${pro.getName()}"></li>
+
+            </ul>
+        </div>
+        <div>
+            <h2 style="text-align: center">Quantity</h2>
+            <hr/>
+            <ul th:each="key:${de.getCount()}">
+                <li style="text-align: right" th:text="${key}"></li>
+
+            </ul>
+        </div>
+        <div >
+            <h2 style="text-align: center">Total</h2>
+            <hr/>
+            <ul th:each="tot:${total}">
+                <li style="text-align: right" th:text="${tot}"></li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="amount" style="display: flex;justify-content: space-between;border-top: none">
+        <h3>Amount($): </h3>
+        <h3 th:text="${order.getTotal()}"></h3>
+    </div>
+</div>
+
+
+<br>
+<a th:href="@{/product/list}">DONE!</a>
+
+
+</body>
+
+</html>
